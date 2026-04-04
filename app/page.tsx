@@ -27,7 +27,7 @@ export default function Home() {
       <QuoteCarousel />
       <InstagramGrid />
       <Reviews />
-      <WhatsApp />
+      <Contact />
       <Footer />
 
       {/* Floating WhatsApp button */}

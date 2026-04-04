@@ -10,7 +10,7 @@ const navLinks = [
   { en:'Our Story', fr:'Notre Histoire',  de:'Unsere Geschichte', href:'#brand'      },
   { en:'Instagram', fr:'Instagram',       de:'Instagram',         href:'#instagram'  },
   { en:'Reviews',   fr:'Avis',            de:'Bewertungen',       href:'#reviews'    },
-  { en:'Contact',   fr:'Contact',         de:'Kontakt',           href:'#newsletter' },
+  { en:'Contact',   fr:'Contact',         de:'Kontakt',           href:'#contact' },
 ]
 
 export default function Header() {
