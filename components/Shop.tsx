@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { useLang } from '@/lib/LanguageContext'
+import { useCart } from '@/lib/CartContext'
 import { products } from '@/lib/products'
 
 const filters = [
@@ -17,18 +18,11 @@ const badgeClass = { hot:'bg-rose', new:'bg-blue', fave:'bg-green' }
 
 export default function Shop() {
   const { lang } = useLang()
+  const { addItem } = useCart()
   const [active, setActive] = useState('all')
-  const [added, setAdded] = useState<number[]>([])
 
   const visible = active === 'all' ? products : products.filter(p => p.category === active)
-
-  const addToBag = (id: number) => {
-    setAdded(prev => [...prev, id])
-    setTimeout(() => setAdded(prev => prev.filter(x => x !== id)), 1500)
-  }
-
   const addLabel = { en:'Add to Bag 🛍️', fr:'Ajouter 🛍️', de:'In den Beutel 🛍️' }
-  const addedLabel = { en:'✅ Added!', fr:'✅ Ajouté !', de:'✅ Hinzugefügt!' }
 
   return (
     <section id="shop" className="py-24 bg-sand">
@@ -45,7 +39,6 @@ export default function Shop() {
           </p>
         </div>
 
-        {/* Filters */}
         <div className="flex justify-center gap-2 flex-wrap mb-10">
           {filters.map(f => (
             <button key={f.key} onClick={() => setActive(f.key)}
@@ -55,13 +48,12 @@ export default function Shop() {
           ))}
         </div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {visible.map(p => {
-            const name = p[`name${lang.charAt(0).toUpperCase() + lang.slice(1)}` as keyof typeof p] as string
-            const desc = p[`desc${lang.charAt(0).toUpperCase() + lang.slice(1)}` as keyof typeof p] as string
-            const badge = p.badge ? p[`badge${lang.charAt(0).toUpperCase() + lang.slice(1)}` as keyof typeof p] as string : null
-            const isAdded = added.includes(p.id)
+            const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
+            const name  = p[`name${cap(lang)}`  as keyof typeof p] as string
+            const desc  = p[`desc${cap(lang)}`  as keyof typeof p] as string
+            const badge = p.badge ? p[`badge${cap(lang)}` as keyof typeof p] as string : null
 
             return (
               <article key={p.id} className="bg-white rounded-[32px] overflow-hidden hover:-translate-y-2 hover:shadow-2xl transition-all duration-300">
@@ -76,9 +68,9 @@ export default function Shop() {
                   <p className="text-[0.82rem] text-slate font-semibold leading-relaxed mb-4">{desc}</p>
                   <div className="flex items-center justify-between">
                     <span className="font-display text-xl text-navy"><span className="font-body text-xs text-slate font-bold">Rs </span>{p.price.toLocaleString()}</span>
-                    <button onClick={() => addToBag(p.id)}
-                      className={`px-4 py-2.5 rounded-full text-[0.8rem] font-black transition-all duration-200 ${isAdded ? 'bg-green text-white' : 'bg-navy text-white hover:bg-rose hover:scale-105'}`}>
-                      {isAdded ? addedLabel[lang] : addLabel[lang]}
+                    <button onClick={() => addItem(p)}
+                      className="px-4 py-2.5 rounded-full text-[0.8rem] font-black transition-all duration-200 bg-navy text-white hover:bg-rose hover:scale-105">
+                      {addLabel[lang]}
                     </button>
                   </div>
                 </div>

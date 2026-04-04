@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useLang } from '@/lib/LanguageContext'
+import { useCart } from '@/lib/CartContext'
 import type { Lang } from '@/lib/i18n'
 
 const navLinks = [
@@ -14,9 +15,9 @@ const navLinks = [
 
 export default function Header() {
   const { lang, setLang } = useLang()
+  const { totalItems, openCart } = useCart()
   const [scrolled, setScrolled] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  const [cartCount] = useState(0)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -57,10 +58,17 @@ export default function Header() {
                 </button>
               ))}
             </div>
-            <button className="w-[42px] h-[42px] rounded-full bg-navy text-white flex items-center justify-center text-lg hover:bg-rose transition-colors relative">
+
+            <button onClick={openCart}
+              className="w-[42px] h-[42px] rounded-full bg-navy text-white flex items-center justify-center text-lg hover:bg-rose transition-colors relative">
               🛍️
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-rose rounded-full text-[10px] font-black text-white flex items-center justify-center">{cartCount}</span>
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-rose rounded-full text-[10px] font-black text-white flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
             </button>
+
             <button className="md:hidden w-[42px] h-[42px] flex flex-col items-center justify-center gap-[5px]" onClick={() => setMobileOpen(!mobileOpen)}>
               <span className={`block w-[22px] h-[2.5px] bg-navy rounded-full transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-2' : ''}`} />
               <span className={`block w-[22px] h-[2.5px] bg-navy rounded-full transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
