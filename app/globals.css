@@ -29,3 +29,14 @@
     to   { transform: translateX(-50%); }
   }
 }
+
+/* Smooth scrolling */
+html { scroll-behavior: smooth; }
+
+/* Prevent horizontal overflow on mobile */
+body { overflow-x: hidden; }
+
+/* Better tap targets on mobile */
+@media (max-width: 768px) {
+  button, a { min-height: 44px; }
+}

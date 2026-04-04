@@ -15,7 +15,7 @@ export default function Footer() {
   const infoLinks = [
     { en:'Our Story', fr:'Notre Histoire', de:'Unsere Geschichte', href:'#brand' },
     { en:'Instagram', fr:'Instagram', de:'Instagram', href:'https://www.instagram.com/palmsmauritius' },
-    { en:'Contact Us', fr:'Contactez-nous', de:'Kontaktiere uns', href:'#newsletter' },
+    { en:'Contact Us', fr:'Contactez-nous', de:'Kontaktiere uns', href:'#contact' },
     { en:'Shipping & Returns', fr:'Livraison & Retours', de:'Versand & Rückgabe', href:'#' },
     { en:'Privacy Policy', fr:'Politique de Confidentialité', de:'Datenschutz', href:'#' },
   ]

@@ -33,7 +33,7 @@ export default function InstagramGrid() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
+        <div className="grid grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 mb-10">
           {images.map((img, i) => (
             <a key={i} href="https://www.instagram.com/palmsmauritius" target="_blank" rel="noopener noreferrer"
               className="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer">

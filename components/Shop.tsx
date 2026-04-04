@@ -48,7 +48,7 @@ export default function Shop() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {visible.map(p => {
             const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1)
             const name  = p[`name${cap(lang)}`  as keyof typeof p] as string
@@ -62,16 +62,16 @@ export default function Shop() {
                   <Image src={p.img} alt={p.altEn} fill className="object-cover hover:scale-105 transition-transform duration-500" sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw" />
                   {badge && <span className={`absolute top-4 left-3.5 z-10 px-3 py-1.5 rounded-full text-[0.68rem] font-black tracking-wide uppercase text-white ${badgeClass[p.badge!]}`}>{badge}</span>}
                 </div>
-                <div className="p-5">
+                <div className="p-3 sm:p-5">
                   <p className="text-[0.7rem] font-black tracking-widest uppercase text-blue mb-1">{p.category}</p>
-                  <h3 className="font-black text-navy mb-1">{name}</h3>
+                  <h3 className="font-black text-navy text-sm sm:text-base mb-1">{name}</h3>
                   <p className="text-[0.82rem] text-slate font-semibold leading-relaxed mb-4">{desc}</p>
                   <div className="flex items-center justify-between">
                     <span className="font-display text-xl text-navy"><span className="font-body text-xs text-slate font-bold">Rs </span>{p.price.toLocaleString()}</span>
                     <button onClick={() => addItem(p)}
-                      className="px-4 py-2.5 rounded-full text-[0.8rem] font-black transition-all duration-200 bg-navy text-white hover:bg-rose hover:scale-105">
-                      {addLabel[lang]}
-                    </button>
+  className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-full text-[0.72rem] sm:text-[0.8rem] font-black transition-all duration-200 bg-navy text-white hover:bg-rose hover:scale-105">
+  {addLabel[lang]}
+</button>
                   </div>
                 </div>
               </article>

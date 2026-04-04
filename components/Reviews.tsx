@@ -25,7 +25,7 @@ export default function Reviews() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {reviews.map((r, i) => (
             <article key={i} className="bg-white rounded-[32px] p-8 relative overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
               <div className={`absolute top-0 left-0 right-0 h-1 ${topColors[i]}`} />

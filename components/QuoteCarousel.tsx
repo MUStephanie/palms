@@ -30,7 +30,7 @@ export default function QuoteCarousel() {
       <div className="max-w-3xl mx-auto px-6 relative z-10">
         <span className="text-6xl block mb-5 animate-spin" style={{animationDuration:'20s'}}>🌴</span>
         <blockquote>
-          <p className={`font-display text-3xl lg:text-5xl text-navy leading-snug mb-4 transition-opacity duration-300 ${fading ? 'opacity-0' : 'opacity-100'}`}>
+          <p className={`font-display text-2xl sm:text-3xl lg:text-5xl text-navy leading-snug mb-4 transition-opacity duration-300 ${fading ? 'opacity-0' : 'opacity-100'}`}>
             &ldquo;{q[lang]}&rdquo;
           </p>
           <footer className="text-sm font-bold tracking-widest uppercase text-slate">{q.attr}</footer>
