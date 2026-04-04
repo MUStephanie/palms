@@ -2,7 +2,7 @@
 import { useLang } from '@/lib/LanguageContext'
 
 // Replace with your actual WhatsApp number (with country code, no + or spaces)
-const WHATSAPP_NUMBER = '23000000000'
+const WHATSAPP_NUMBER = '23058594941'
 
 export default function WhatsApp() {
   const { lang } = useLang()

@@ -12,7 +12,7 @@ import Footer from '@/components/Footer'
 import CartDrawer from '@/components/CartDrawer'
 
 // Replace with your actual WhatsApp number
-const WHATSAPP_NUMBER = '23000000000'
+const WHATSAPP_NUMBER = '23058594941'
 
 export default function Home() {
   return (
