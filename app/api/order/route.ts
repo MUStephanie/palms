@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { supabase } from '@/lib/supabase'
 import { Resend } from 'resend'
+import { supabaseAdmin } from '@/lib/supabase'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
 
@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     const { name, email, phone, address, items, total, paymentMethod, notes } = body
 
     // 1. Save to Supabase
-    const { data, error } = await supabase.from('orders').insert([{
+    const { data, error } = await supabaseAdmin.from('orders').insert([{
       name, email, phone, address,
       items,
       total,
