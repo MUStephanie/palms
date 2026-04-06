@@ -8,7 +8,7 @@ export async function POST(req: NextRequest) {
     const { name, email, message } = await req.json()
 
     await resend.emails.send({
-      from: 'Palms Mauritius <onboarding@resend.dev>',
+      from: 'Palms Mauritius <hello@palmsmauritius.com>',
       to: process.env.YOUR_EMAIL!,
       subject: `💬 New message from ${name}`,
       html: `
