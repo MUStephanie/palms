@@ -239,10 +239,6 @@ export const products: Product[] = [
     price: 1800, badge: 'new', badgeEn: '✨ New', badgeFr: '✨ Nouveau', badgeDe: '✨ Neu',
     img: '/images/products/Hoodiewhitepalms-08.webp',
     altEn: 'Island Hoodie white', altFr: 'Hoodie blanc Insulaire', altDe: 'Insel Hoodie Weiß',
-    colours: [
-      { key: 'white', label: 'White', swatch: '#FFFFFF' },
-      { key: 'grey',  label: 'Grey',  swatch: '#9CA3AF' },
-    ],
     sizes: ['S/M', 'L/XL'],
   },
 
@@ -257,10 +253,6 @@ export const products: Product[] = [
     price: 1800, badge: null,
     img: '/images/products/Hoodiegreypalms-09.webp',
     altEn: 'Island Hoodie grey', altFr: 'Hoodie gris Insulaire', altDe: 'Insel Hoodie Grau',
-    colours: [
-      { key: 'white', label: 'White', swatch: '#FFFFFF' },
-      { key: 'grey',  label: 'Grey',  swatch: '#9CA3AF' },
-    ],
     sizes: ['S/M', 'L/XL'],
   },
 
