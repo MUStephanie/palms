@@ -5,11 +5,11 @@ import { useLang } from '@/lib/LanguageContext'
 export default function Hero() {
   const { lang } = useLang()
 
-  const eyebrow = { en:'🌴 Positive Wear · Est. 2025', fr:'🌴 Mode Positive · Fondé 2025', de:'🌴 Positive Mode · Gegr. 2025' }
-  const sub = { en:'Positive wear and gifts designed for good vibes and island calm. T-shirts, hoodies, caps, tote bags — wear the feeling. 🌴', fr:'Des vêtements et cadeaux positifs conçus pour les bonnes vibrations. Portez le sentiment. 🌴', de:'Positive Mode und Geschenke für gute Stimmung und Inselruhe. Trag das Gefühl. 🌴' }
-  const cta = { en:'Shop the Collection ✨', fr:'Voir la Collection ✨', de:'Zur Kollektion ✨' }
-  const badge1 = { en:'Island Made', fr:'Fait Ici', de:'Auf der Insel' }
-  const badge2 = { en:'Good Vibes', fr:'Bonnes Vibrations', de:'Gute Vibes' }
+  const eyebrow = { en: '🌴 Positive Wear · Est. 2025', fr: '🌴 Mode Positive · Fondé 2025', de: '🌴 Positive Mode · Gegr. 2025' }
+  const sub     = { en: 'Positive wear and gifts designed for good vibes and island calm. T-shirts, hoodies, caps, tote bags — wear the feeling. 🌴', fr: 'Des vêtements et cadeaux positifs conçus pour les bonnes vibrations. Portez le sentiment. 🌴', de: 'Positive Mode und Geschenke für gute Stimmung und Inselruhe. Trag das Gefühl. 🌴' }
+  const cta     = { en: 'Shop the Collection ✨', fr: 'Voir la Collection ✨', de: 'Zur Kollektion ✨' }
+  const badge1  = { en: 'Island Made', fr: 'Fait Ici', de: 'Auf der Insel' }
+  const badge2  = { en: 'Good Vibes', fr: 'Bonnes Vibrations', de: 'Gute Vibes' }
 
   return (
     <section id="hero" className="min-h-screen relative flex items-center overflow-hidden bg-cream">
@@ -33,7 +33,7 @@ export default function Hero() {
             </div>
 
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-tight text-navy mb-5">
-              {{ en:<>Choose<br/><span className="text-rose relative inline-block">Happiness<span className="absolute -bottom-1 left-0 right-0 h-1 bg-gold rounded-sm"/></span><br/>Every Day</>, fr:<>Choisissez<br/><span className="text-rose">le Bonheur</span><br/>Chaque Jour</>, de:<>Wähle<br/><span className="text-rose">das Glück</span><br/>Jeden Tag</> }[lang]}
+              {{ en: <><span className="text-rose relative inline-block">Choose<span className="absolute -bottom-1 left-0 right-0 h-1 bg-gold rounded-sm"/></span><br/>Happiness<br/>Every Day</>, fr: <>Choisissez<br/><span className="text-rose">le Bonheur</span><br/>Chaque Jour</>, de: <>Wähle<br/><span className="text-rose">das Glück</span><br/>Jeden Tag</> }[lang]}
             </h1>
 
             <p className="text-base sm:text-lg leading-relaxed text-navy-soft font-semibold max-w-md mx-auto lg:mx-0 mb-8">
@@ -70,7 +70,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Image — hidden on small mobile, shown from sm up */}
+          {/* Image — clean, no float cards */}
           <div className="relative max-w-[420px] mx-auto w-full hidden sm:block">
             <div className="relative rounded-[32px] lg:rounded-[48px] overflow-hidden aspect-[4/5] shadow-2xl">
               <Image
@@ -78,21 +78,6 @@ export default function Hero() {
                 alt="Person wearing a Palms Mauritius t-shirt"
                 fill className="object-cover" sizes="(max-width:1024px) 420px, 500px" priority />
               <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-gradient-to-r from-rose via-blue to-green" />
-            </div>
-            {/* Float cards — hidden on tablet, shown on desktop */}
-            <div className="hidden lg:block">
-              <div className="absolute top-6 -left-8 bg-white rounded-2xl px-4 py-3 shadow-lg flex items-center gap-2 text-sm font-bold text-navy border-l-4 border-rose">
-                <span className="text-xl">☀️</span>
-                {{ en:'Good Vibes Only', fr:'Bonnes Vibrations', de:'Nur gute Vibes' }[lang]}
-              </div>
-              <div className="absolute bottom-12 -right-6 bg-white rounded-2xl px-4 py-3 shadow-lg flex items-center gap-2 text-sm font-bold text-navy border-l-4 border-blue">
-                <span className="text-xl">🌊</span>
-                {{ en:'Made in Mauritius', fr:'Fait à Maurice', de:'Made in Mauritius' }[lang]}
-              </div>
-              <div className="absolute top-1/2 -right-5 bg-white rounded-2xl px-4 py-3 shadow-lg flex items-center gap-2 text-sm font-bold text-navy border-l-4 border-green">
-                <span className="text-xl">🌴</span>
-                {{ en:'Wear Happiness', fr:'Porter le Bonheur', de:'Glück tragen' }[lang]}
-              </div>
             </div>
           </div>
 

@@ -32,7 +32,8 @@ export default function Header() {
 
           <a href="#" className="flex items-center gap-2 group">
             <div className="w-[52px] h-[52px] relative flex-shrink-0">
-              <Image src="/palms-logo.png" alt="Palms Mauritius" fill className="object-contain" />
+              <Image src="/palms-logo.png" alt="Palms Mauritius" fill sizes="52px" className="object-contain" />
+
             </div>
             <div className="flex flex-col leading-tight">
               <span className="font-display text-[1.35rem] text-rose group-hover:text-rose-lt transition-colors">Palms</span>
