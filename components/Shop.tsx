@@ -1,10 +1,29 @@
 'use client'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useLang } from '@/lib/LanguageContext'
 import { useCart } from '@/lib/CartContext'
-import { products } from '@/lib/products'
+import { supabase } from '@/lib/supabase'
 import type { Product } from '@/lib/products'
+
+// Map snake_case DB row → camelCase Product type
+function mapProduct(r: Record<string, unknown>): Product {
+  return {
+    id:       r.id       as number,
+    category: r.category as Product['category'],
+    nameEn: r.name_en as string, nameFr: r.name_fr as string, nameDe: r.name_de as string,
+    descEn: r.desc_en as string, descFr: r.desc_fr as string, descDe: r.desc_de as string,
+    price:  r.price as number,
+    badge:  (r.badge ?? null) as Product['badge'],
+    badgeEn: (r.badge_en ?? undefined) as string | undefined,
+    badgeFr: (r.badge_fr ?? undefined) as string | undefined,
+    badgeDe: (r.badge_de ?? undefined) as string | undefined,
+    img:    r.img as string,
+    altEn: r.alt_en as string, altFr: r.alt_fr as string, altDe: r.alt_de as string,
+    colours: (r.colours ?? undefined) as Product['colours'],
+    sizes:   (r.sizes   ?? undefined) as Product['sizes'],
+  }
+}
 
 const filters = [
   { key: 'all',     en: 'All',       fr: 'Tout',        de: 'Alle'      },
@@ -24,6 +43,20 @@ export default function Shop() {
   const { lang }    = useLang()
   const { addItem } = useCart()
   const [active, setActive] = useState('all')
+  const [products, setProducts] = useState<Product[]>([])
+  const [loading, setLoading]   = useState(true)
+
+  useEffect(() => {
+    supabase
+      .from('products')
+      .select('*')
+      .eq('active', true)
+      .order('sort_order', { ascending: true })
+      .then(({ data }) => {
+        if (data) setProducts(data.map(mapProduct))
+        setLoading(false)
+      })
+  }, [])
 
   // Track the selected colour + size for each product card independently
   const [selections, setSelections] = useState<Selections>({})
@@ -104,6 +137,20 @@ export default function Shop() {
         </div>
 
         {/* Product grid */}
+        {loading ? (
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="bg-white rounded-[32px] overflow-hidden animate-pulse">
+                <div className="aspect-square bg-sand" />
+                <div className="p-5 space-y-3">
+                  <div className="h-3 bg-sand rounded w-1/3" />
+                  <div className="h-4 bg-sand rounded w-2/3" />
+                  <div className="h-3 bg-sand rounded w-full" />
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
         <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
           {visible.map(p => {
             const name  = p[`name${cap(lang)}`  as keyof typeof p] as string
@@ -200,6 +247,7 @@ export default function Shop() {
             )
           })}
         </div>
+        )}
 
         {/* Instagram CTA */}
         <div className="text-center mt-12">
